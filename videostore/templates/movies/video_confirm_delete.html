@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card shadow-sm">
+    <div class="card-header"><h4 class="mb-0">Delete Video?</h4></div>
+    <div class="card-body">
+      <p>Are you sure you want to delete <b>{{ video.title }}</b> ({{ video.movie_id }})?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger" type="submit">Yes, delete</button>
+        <a class="btn btn-light-outline" href="{% url 'video_detail' video.movie_id %}">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
