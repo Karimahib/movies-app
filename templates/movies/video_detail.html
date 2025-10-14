@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="mb-0">{{ video.title }}</h3>
+    <span class="badge bg-warning text-dark ms-auto">{{ video.genre }}</span>
+  </div>
+  <div class="card-body">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col">
+        <ul class="list-unstyled mb-0">
+          <li><b>MovieID:</b> {{ video.movie_id }}</li>
+          <li><b>Release year:</b> {{ video.release_year }}</li>
+          <li><b>Director:</b> {{ video.director_name }}</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled mb-0">
+          <li><b>Actor 1:</b> {{ video.actor1_name }}</li>
+          <li><b>Actor 2:</b> {{ video.actor2_name|default:"—" }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer bg-white d-flex gap-2">
+    <a class="btn btn-light-outline" href="{% url 'video_list' %}">Back</a>
+    <a class="btn btn-primary" href="{% url 'video_update' video.movie_id %}">Edit</a>
+    <a class="btn btn-outline-danger" href="{% url 'video_delete' video.movie_id %}">Delete</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+/* General spacing */
+.container-narrow { max-width: 980px; }
+
+/* Card tweaks */
+.movie-card { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.movie-card .card-header { background: #0d6efd; color: #fff; }
+.movie-card .meta { color: #6c757d; }
+.movie-card .badge-genre { font-weight: 600; }
+
+/* Buttons */
+.btn-light-outline { border: 1px solid #ccc; color: #333; background: #fff; }
+.btn-light-outline:hover { background: #f3f3f3; }
+
+/* List page layout */
+.grid-gap { row-gap: 1.25rem !important; }

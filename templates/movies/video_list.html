@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="d-flex align-items-center mb-3">
+    <h2 class="mb-0">All Movies</h2>
+    <a class="btn btn-success ms-auto" href="{% url 'video_create' %}">+ Add new video</a>
+  </div>
+
+  {% if videos %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 grid-gap">
+      {% for v in videos %}
+        <div class="col">
+          <div class="card movie-card shadow-sm h-100">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <h5 class="card-title mb-0 text-truncate">{{ v.title }}</h5>
+                <span class="badge bg-warning text-dark ms-auto badge-genre">{{ v.genre }}</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="meta mb-2">
+                <b>MovieID:</b> {{ v.movie_id }}<br>
+                <b>Year:</b> {{ v.release_year }}
+              </p>
+              <p class="mb-2">
+                <b>Director:</b> {{ v.director_name }}
+              </p>
+              <p class="mb-0">
+                <b>Actors:</b> {{ v.actor1_name }}{% if v.actor2_name %}, {{ v.actor2_name }}{% endif %}
+              </p>
+            </div>
+            <div class="card-footer bg-white d-flex gap-2">
+              <a class="btn btn-primary btn-sm" href="{% url 'video_detail' v.movie_id %}">View</a>
+	      <a class="btn btn-light-outline btn-sm" href="{% url 'video_update' v.movie_id %}">Edit</a>
+	      <a class="btn btn-outline-danger btn-sm" href="{% url 'video_delete' v.movie_id %}">Delete</a>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info">No videos yet. <a href="{% url 'video_create' %}">Add one</a>.</div>
+  {% endif %}
+{% endblock %}
